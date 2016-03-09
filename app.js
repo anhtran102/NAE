@@ -82,6 +82,20 @@ var methodOverride = require('method-override'); // simulate DELETE and PUT (exp
 // configuration =================
 
 mongoose.connect('mongodb://node:nodeuser@mongo.onmodulus.net:27017/uwO3mypu');     // connect to mongoDB database on modulus.io
+var mysql = require("mysql");
+var connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password:'admin'
+});
+
+connection.connect();
+//connection.query('SELECT * FROM demo.brand', function(err, rows) {
+//    if (err) throw err;
+//    console.log('The solution is: ', rows);
+//});
+
+//connection.end();
 
 app.use(express.static(__dirname + '/public'));                 // set the static files location /public/img will be /img for users
 app.use(morgan('dev'));                                         // log every request to the console
@@ -94,10 +108,6 @@ app.use(methodOverride());
 app.listen(3000);
 console.log("App listening on port 8080");
 
-//var todo = {
-//  text: String
-//};
-
 // define model =================
 var todo = mongoose.model('Todo', {
     text: String
@@ -107,13 +117,18 @@ var todo = mongoose.model('Todo', {
 //get all todos
 app.get('/api/todos', function(req, res) {
     //get all todos
-    todo.find(function(err, todos) {
-        if (err) {
-            res.send(err);
-        }
+    //todo.find(function(err, todos) {
+    //    if (err) {
+    //        res.send(err);
+    //    }
 
-        res.json(todos);// return all todos in JSON format
+    //    res.json(todos);// return all todos in JSON format
+    //});
+    connection.query('SELECT * FROM demo.brand', function(err, rows) {
+        if (err) throw err;          
+        res.json(rows);
     });
+
 });
 
 app.post('/api/todos', function(req, res) {
