@@ -86,7 +86,8 @@ var mysql = require("mysql");
 var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password:'admin'
+    password: 'admin',
+    database: 'demo'
 });
 
 connection.connect();
@@ -106,7 +107,7 @@ app.use(methodOverride());
 
 // listen (start app with node server.js) ======================================
 app.listen(3000);
-console.log("App listening on port 8080");
+console.log("App listening on port 3000");
 
 // define model =================
 var todo = mongoose.model('Todo', {
