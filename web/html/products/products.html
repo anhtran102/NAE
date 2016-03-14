@@ -1,0 +1,30 @@
+﻿<div class="panel panel-default">
+  <div class="panel-heading">List of products</div>
+  <div class="panel-body">
+    <table class="table" ng-if="products.length > 0">
+        <thead>
+            <tr>                
+                <th>Product Name</th>
+                <th>Description</th>
+                <th>Brand Name</th>
+                <th>Recent Comment</th>
+                <th>Rating</th>
+                <th>User</th>
+                <th>Add Review</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="product in products">                
+                <td>{{product.Name}}</td>
+                <td>{{product.Description}}</td>
+                <td>{{product.Brand}}</td>
+                <td>{{product.Comment}}</td>
+                <td>{{product.Rating}}</td>
+                <td>{{product.UserName}}</td>
+                <td><a href="#products/{{product.ID}}/Review">Add Review</a></td>
+            </tr>
+        </tbody>
+    </table>
+      <h4 ng-if="products.length === 0">No product found!</h4>
+  </div>
+</div>
