@@ -1,4 +1,5 @@
 
+
 CREATE DATABASE  IF NOT EXISTS `demo`;
 USE `demo`;
 
@@ -148,4 +149,5 @@ BEGIN
 END;;
 DELIMITER ;
 
+update product set Image = 'defaul-image.jpg' where id <1000
 

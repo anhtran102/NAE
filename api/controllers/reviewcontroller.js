@@ -11,7 +11,6 @@ var reviewController = {
                 throw err;
             }
 
-            con.release();
             res.json(results);
         });
     }

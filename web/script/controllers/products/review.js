@@ -7,7 +7,7 @@ angular.module("myApp.controllers").controller("abc", ["$scope", "$routeParams",
         $scope.init = function () {
             var url = "";
             $scope.product = {};
-            var url = baseUrl + "/" + productId;
+            url = baseUrl + "/" + productId;
             $http.get(url).then(
             function (err) {
 
