@@ -1,5 +1,8 @@
 ﻿
-
+/**
+ * controller to control action based to review
+ */
+'use strict';
 var reviewService = require("../services/reviewservice");
 
 var reviewController = {

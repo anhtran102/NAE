@@ -1,6 +1,8 @@
 ﻿
-//Product controller
-
+/**
+ * controller to control action based to product
+ */
+'use strict';
 var productService = require("../services/productService");
 
 var productController = {

@@ -1,11 +1,11 @@
-﻿'use strict';
-
-angular.module("myApp.controllers").controller("productController", ["$scope","$routeParams","$http",
-    function ($scope, $routeParams, $http) {
-        var rootUrl = 'api/products';
+﻿/**
+ * product controller to control events related to product details
+ */
+'use strict';
+angular.module("myApp.controllers").controller("productController", ["$scope","$routeParams","productService",
+    function ($scope, $routeParams, productservice) {
         var brandId = 0;
         $scope.init = function () {
-            var url = "";
             $scope.products = [];
             if (!$routeParams.brandId) {
                 brandId = 0;
@@ -14,13 +14,13 @@ angular.module("myApp.controllers").controller("productController", ["$scope","$
                     brandId = parseInt($routeParams.brandId, 10);
                 }               
             }
-            url = rootUrl + "?brandId=" + brandId;
-            $http.get(url).then(
-                function (data) {
+
+            productservice.getProducts(brandId,
+            function(){
+
+            }, function(data){
                     $scope.products = data.data;
-                }, function (error) {
-                }
-               );
+                });
         };
 
         $scope.init();

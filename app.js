@@ -9,6 +9,7 @@ app.use('/', express.static('./'));
 app.use(express.static(__dirname + '/web'));
 app.use(express.static(__dirname + '/web/html'));
 app.use(express.static(__dirname + '/web/images'));
+app.use(express.static(__dirname + '/web/script'));
 
 app.get('/', function (req, res) {
     res.sendFile('/web/index.html');    
@@ -25,5 +26,6 @@ app.route('/api/products/:id')
 app.route('/api/reviews')
     .post(reviewController.createReview);
 
-app.listen(3000);
-console.log("Running at Port 3000");
+var config = require('./api/config');
+app.listen(config.hostserver.port);
+console.log("Running at Port"+config.hostserver.port);

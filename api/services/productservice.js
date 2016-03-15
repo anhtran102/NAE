@@ -1,6 +1,8 @@
-﻿
-//Service
+﻿/**
+ * product service to handle business related to products
+ */
 
+'use strict';
 var productRepository = require("../repositories/productRepository");
 var connection = require("../repositories/dbconnection");
 var productService = {
@@ -39,7 +41,7 @@ var productService = {
                 callback(err, data);
             });
         });
-    },
-}
+    }
+};
 
 module.exports = productService;

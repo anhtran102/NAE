@@ -1,5 +1,7 @@
-﻿'use strict';
-
+﻿/**
+ * add review directive
+ */
+'use strict';
 angular.module("myApp.directives")
     .controller("addreviewController", ["$scope", "$routeParams", "$http",
     function ($scope, $routeParams, $http) {
@@ -8,9 +10,8 @@ angular.module("myApp.directives")
         $scope.review.UserId = 1;
         $scope.addNewReview = function () {
             var baseUrl = "/api/reviews";
-            var url = baseUrl;
-            return $http.post(url, JSON.stringify($scope.review)).then(
-                function (data) {
+            return $http.post(baseUrl, JSON.stringify($scope.review)).then(
+                function () {
                     if ($scope.reviews) {
                         $scope.reviews = [];
                     }

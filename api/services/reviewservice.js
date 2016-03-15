@@ -1,6 +1,8 @@
 ﻿
-//Service
-
+/**
+ * Review service to handle business related to review
+ */
+ 'use strict';
 var reviewRepository = require("../repositories/reviewRepository");
 var connection = require("../repositories/dbconnection");
 var reviewService = {
@@ -22,6 +24,6 @@ var reviewService = {
             });
         });
     }
-}
+};
 
 module.exports = reviewService;

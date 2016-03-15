@@ -1,4 +1,7 @@
-﻿'use strict';
+﻿/**
+ * review directive
+ */
+'use strict';
 
 angular.module("myApp.directives")
     .controller("reviewsController", ["$scope", "$routeParams", "$http",

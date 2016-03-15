@@ -5,7 +5,7 @@
       <div class="col-xs-6 col-md-3" ng-repeat="product in products">         
         <div class="thumbnail">
           <h4 class="center">{{product.Name}}</h4>
-          <img class="clickable" ng-src="../../images/products/{{product.Image}}" onerror="../../images/products/defaul-image.jpg" alt="{{product.Name}}" title="{{product.Name}}">
+          <a href="#products/{{product.ID}}"><img class="clickable" ng-src="../../images/products/{{product.Image}}" onerror="../../images/products/defaul-image.jpg" alt="{{product.Name}}" title="{{product.Name}}"></a>
           <div class="caption">            
               <p class="center">{{product.Price| currency:undefined:0}}</p>
             <p>{{product.Description}}</p>
