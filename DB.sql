@@ -38,6 +38,7 @@ CREATE TABLE Product(
   Colour NVARCHAR(100),
   Created DATETIME NULL,
   StatusId INT NOT NULL DEFAULT 1,
+  Image VARCHAR(100) NULL,
   PRIMARY KEY (ID),
   CONSTRAINT FK_Product_Brand FOREIGN KEY (BrandId) REFERENCES Brand(ID),
   CONSTRAINT FK_Product_Status FOREIGN KEY (StatusId) REFERENCES Brand(ID)
@@ -49,6 +50,7 @@ CREATE TABLE Preview(
   Rating INT NOT NULL DEFAULT 0,
   Comment NVARCHAR(2000),
   UserId INT NOT NULL,
+  Created DATETIME NULL,
   PRIMARY KEY (ID),
   CONSTRAINT FK_Review_Product FOREIGN KEY (ProductId) REFERENCES Product(ID),
   CONSTRAINT FK_Review_User FOREIGN KEY (UserId) REFERENCES User(ID)
@@ -99,10 +101,12 @@ BEGIN
 
 
 	SELECT 	p.ID, p.Name, p.Description, 
-			b.Name AS Brand, 
+			b.Name AS Brand,
+            p.Price,
 			npr.UserName, 
 			npr.Rating, 
-			npr.Comment
+			npr.Comment,
+            p.Image
 	FROM product p 
     LEFT JOIN Brand b ON p.BrandId = b.Id
 	LEFT JOIN temp npr ON p.Id = npr.ProductId	
@@ -119,7 +123,29 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getAll`(
 )
 BEGIN
 	SELECT * FROM product order by Created Limit 10;
-END
+END;
+DELIMITER ;;
+SELECT p.*, b.Name as Brand
+FROM product p
+INNER JOIN brand b ON p.BrandId = b.Id WHERE p.Id = 2
 
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getProductDetails`(
+	IN productId INT
+)
+BEGIN
+	SELECT p.*, b.Name as Brand, a.Name as Status
+	FROM product p
+	INNER JOIN brand b ON p.BrandId = b.Id 
+    INNER JOIN availablestatus a ON p.StatusId = a.ID
+    WHERE p.Id = productId;
+
+	SELECT p.*, u.UserName
+    FROM preview p 
+    INNER JOIN user u ON p.UserId = u.ID
+    WHERE p.ProductId = productId    
+	ORDER BY p.ID DESC ;    
+END;;
+DELIMITER ;
 
 

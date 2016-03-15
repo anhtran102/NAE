@@ -1,0 +1,23 @@
+﻿<div class="panel panel-default">
+  <div class="panel-heading">Product Detail</div>
+  <div class="panel-body">    
+      <div class="row">
+      <div class="col-xs-6 col-md-10">         
+        <div class="thumbnail">
+          <h4 class="center">{{product.Name}}</h4>
+          <img class="center full-image" ng-src="../../images/products/{{product.Image}}" onerror="../../images/products/defaul-image.jpg" alt="{{product.Name}}" title="{{product.Name}}">
+          <div class="caption">            
+              <p class="center">{{product.Price| currency:undefined:0}}</p>
+            <p>Brand: {{product.Brand}}</p>
+            <p>Color: {{product.Colour}}</p>
+            <p>Status: {{product.Status}}</p>
+            <p>Description: {{product.Description}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+      <h4 ng-if="products.length === 0">No product found!</h4>
+  </div>
+    <addreview>
+    <reviews ng-if="reviews.length > 0" reviews="reviews"></reviews>
+</div>

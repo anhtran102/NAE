@@ -1,3 +1,5 @@
+'use strict';
+
 var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
@@ -19,7 +21,7 @@ app.route('/api/products')
 app.route('/api/products/:id')
     .get(productController.getProductById);
 
-app.route('/api/review')
+app.route('/api/reviews')
     .post(reviewController.createReview);
 
 app.listen(3000);

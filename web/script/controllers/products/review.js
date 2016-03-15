@@ -1,6 +1,6 @@
 ﻿'use strict';
 
-angular.module("myApp.controllers", []).controller("reviewController", ["$scope", "$routeParams", '$http',
+angular.module("myApp.controllers").controller("abc", ["$scope", "$routeParams", "$http",
     function ($scope, $routeParams, $http) {
         var rootUrl = 'api/products';
         $scope.review = {};
@@ -25,4 +25,4 @@ angular.module("myApp.controllers", []).controller("reviewController", ["$scope"
         };
 
         $scope.init();
-    }]);
+    }])

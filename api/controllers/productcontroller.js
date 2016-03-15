@@ -16,12 +16,12 @@ var productController = {
         });
     },
     getProductById: function (req, res) {
-        productService.getProductById(req.params.id, con, function (err, results) {
+        productService.getProductById(req.params.id, function (err, data) {
             if (err) {
                 console.log(err);
             }
 
-            res.json(results);
+            res.json(data);
         });
     }
 };

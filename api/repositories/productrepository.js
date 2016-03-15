@@ -12,7 +12,7 @@ var productRepository = {
         });
     },
     getProductById: function (id, con, callback) {
-        con.query('SELECT * FROM product WHERE Id = ?', id, function (err, data) {
+        con.query('CALL sp_getProductDetails('+id+')', function (err, data) {
             callback(err, data[0]);
         });
     }

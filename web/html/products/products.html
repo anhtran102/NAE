@@ -1,30 +1,21 @@
 ﻿<div class="panel panel-default">
   <div class="panel-heading">List of products</div>
-  <div class="panel-body">
-    <table class="table" ng-if="products.length > 0">
-        <thead>
-            <tr>                
-                <th>Product Name</th>
-                <th>Description</th>
-                <th>Brand Name</th>
-                <th>Recent Comment</th>
-                <th>Rating</th>
-                <th>User</th>
-                <th>Add Review</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="product in products">                
-                <td>{{product.Name}}</td>
-                <td>{{product.Description}}</td>
-                <td>{{product.Brand}}</td>
-                <td>{{product.Comment}}</td>
-                <td>{{product.Rating}}</td>
-                <td>{{product.UserName}}</td>
-                <td><a href="#products/{{product.ID}}/Review">Add Review</a></td>
-            </tr>
-        </tbody>
-    </table>
+  <div class="panel-body">    
+      <div class="row">
+      <div class="col-xs-6 col-md-3" ng-repeat="product in products">         
+        <div class="thumbnail">
+          <h4 class="center">{{product.Name}}</h4>
+          <img class="clickable" ng-src="../../images/products/{{product.Image}}" onerror="../../images/products/defaul-image.jpg" alt="{{product.Name}}" title="{{product.Name}}">
+          <div class="caption">            
+              <p class="center">{{product.Price| currency:undefined:0}}</p>
+            <p>{{product.Description}}</p>
+            <p ng-if="product.Comment"><i>&quot; {{product.Comment}} &quot;</i></p>           
+            <p ng-if="product.Rating" class="text-right">Rating: {{product.Rating}} - {{product.UserName}}</p>                          
+            <p class="center"><a href="#products/{{product.ID}}" class="btn btn-primary" role="button">Add review</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
       <h4 ng-if="products.length === 0">No product found!</h4>
   </div>
 </div>
