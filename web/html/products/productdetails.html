@@ -18,6 +18,17 @@
     </div>
       <h4 ng-if="products.length === 0">No product found!</h4>
   </div>
-    <addreview>
-    <reviews ng-if="reviews.length > 0" reviews="reviews"></reviews>
+</div>
+<addreview></addreview>
+<div class="panel panel-default">
+    <div class="panel-heading">List reviews</div>
+    <div class="media" ng-repeat="r in reviews">
+        <div class="media-left media-middle">
+            <a>{{r.UserName}} </a>
+        </div>
+        <div class="media-body">
+            <p><i>{{r.Comment}}</i></p>
+            <p>Rating: {{r.Rating | number:1}}</p>
+        </div>
+    </div>
 </div>

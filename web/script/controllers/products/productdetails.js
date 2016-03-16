@@ -6,7 +6,7 @@ angular.module("myApp.controllers").controller("productdetailsController", ["$sc
     function ($scope, $routeParams, productservice) {
         var id = 0;
         $scope.reviews = [];
-        $scope.init = function () {
+        $scope.initProductDetail = function () {
             if (!$routeParams.id) {
                 id = 0;
             } else {
@@ -18,10 +18,10 @@ angular.module("myApp.controllers").controller("productdetailsController", ["$sc
 
             },
             function(data){
-                $scope.product = data.data[0];
+                $scope.product = data.data[0][0];
                 $scope.reviews = data.data[1]?data.data[1]: [];
             });
         };
 
-        $scope.init();
+        $scope.initProductDetail();
 }]);

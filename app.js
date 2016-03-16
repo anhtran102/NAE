@@ -7,9 +7,9 @@ app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 app.use('/', express.static('./'));
 app.use(express.static(__dirname + '/web'));
-app.use(express.static(__dirname + '/web/html'));
-app.use(express.static(__dirname + '/web/images'));
-app.use(express.static(__dirname + '/web/script'));
+//app.use(express.static(__dirname + '/web/html'));
+//app.use(express.static(__dirname + '/web/images'));
+//app.use(express.static(__dirname + '/web/script'));
 
 app.get('/', function (req, res) {
     res.sendFile('/web/index.html');    

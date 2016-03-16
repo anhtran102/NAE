@@ -15,7 +15,7 @@ var productRepository = {
     },
     getProductById: function (id, con, callback) {
         con.query('CALL sp_getProductDetails(?)', id, function (err, data) {
-            callback(err, data[0]);
+            callback(err, data);
         });
     }
 };

@@ -15,7 +15,9 @@ angular.module("myApp.directives")
                     if ($scope.reviews) {
                         $scope.reviews = [];
                     }
-                    $scope.reviews.push($scope.review);
+                    $scope.review.Comment = null;
+                    $scope.review.Rating = null;
+                    $scope.initProductDetail();
                 }
                 , function (err) {
                     console.log(err);
@@ -26,6 +28,6 @@ angular.module("myApp.directives")
         return {
             restrict: "E",
             templateUrl: './html/products/addreview.html',
-            controller: 'addreviewController'            
+            controller: 'addreviewController'
         }
     });
